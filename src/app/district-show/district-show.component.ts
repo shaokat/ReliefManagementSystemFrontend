@@ -8,16 +8,16 @@ import { AreaService } from '../services/division.service';
 })
 export class DistrictShowComponent implements OnInit {
 
-  constructor(private service:AreaService) { }
-divisions:any[];
-districts:any[];
+  constructor(private service: AreaService) { }
+divisions: any[];
+districts: any[];
   ngOnInit() {
-    this.service.getAll("/divisions")
-    .subscribe(divisions=>this.divisions=divisions);
+    this.service.getAll('/divisions')
+    .subscribe(divisions => this.divisions = divisions);
   }
-  getDistricts(divisoion){
-    this.service.getById(["/division","/districts"],divisoion)
-    .subscribe(districts=>this.districts=districts);
+  getDistricts(divisoion) {
+    this.service.getById(['/division', '/districts'], divisoion)
+    .subscribe(districts => this.districts = districts);
   }
 
 }

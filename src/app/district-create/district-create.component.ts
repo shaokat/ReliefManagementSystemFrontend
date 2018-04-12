@@ -11,17 +11,18 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./district-create.component.css']
 })
 export class DistrictCreateComponent implements OnInit {
-divisions:any[];
-  constructor(private service:AreaService) { }
+divisions: any[];
+  constructor(private service: AreaService) { }
 
   ngOnInit() {
-    this.service.getAll("/divisions")
-    .subscribe(divisions=>this.divisions=divisions);
+    this.service.getAll('/divisions')
+    .subscribe(divisions => this.divisions = divisions);
   }
-  crateDistrict(input){
-    let division = input.value.division;
-    let district = { name: input.value.districtName };
-    this.service.create(district,['/division','/district'],division);
+  crateDistrict(input) {
+    const division = input.value.division;
+    const district = { name: input.value.districtName };
+    input.value.districtName = '';
+    this.service.create(district, ['/division', '/district'], division);
   }
 
 }
