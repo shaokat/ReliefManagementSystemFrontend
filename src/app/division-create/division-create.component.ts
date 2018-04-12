@@ -20,7 +20,7 @@ private divisionName:any
     
     let division = { name: input.value };
     console.log(division);
-    this.service.create(division,"/division");
+    this.service.createDivision(division,"/division");
   }
   show(divi:NgForm){
     let division1 = { name: divi.value };

@@ -9,6 +9,7 @@ import { DivisionCreateComponent } from './division-create/division-create.compo
 import { DivisionShowComponent } from './division-show/division-show.component';
 import { HttpModule } from '@angular/http';
 import { DistrictShowComponent } from './district-show/district-show.component';
+import { DistrictCreateComponent } from './district-create/district-create.component';
 
 
 @NgModule({
@@ -16,16 +17,18 @@ import { DistrictShowComponent } from './district-show/district-show.component';
     AppComponent,
     DivisionCreateComponent,
     DivisionShowComponent,
-    DistrictShowComponent
+    DistrictShowComponent,
+    DistrictCreateComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     RouterModule.forRoot([
-      {path:'showDivisions',component:DivisionShowComponent},
-      {path:'addDivision',component:DivisionCreateComponent},
-      {path:'addDistrict',component:DistrictShowComponent}
+      {path:'division/show',component:DivisionShowComponent},
+      {path:'division/add',component:DivisionCreateComponent},
+      {path:'district/show',component:DistrictShowComponent},
+      {path:'district/add',component:DistrictCreateComponent}
     ])
 
   ],
