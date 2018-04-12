@@ -1,0 +1,18 @@
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Division Name</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr  *ngFor="let division of divisions">
+            <td> {{ division.name }}</td>
+            <td><button 
+              (click)="deletePost(division)"
+              class="btn btn-default btn-sm">Delete</button></td>
+      </tr>
+     
+    </tbody>
+  </table>
+  

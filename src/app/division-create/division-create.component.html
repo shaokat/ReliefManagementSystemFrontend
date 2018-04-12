@@ -1,0 +1,14 @@
+
+<div class="card" style="width: 18rem;">
+    <h5 class="card-header bg-light text-black">Create Division</h5>
+    <div class="card-body">
+    
+      <form #division="ngForm" (ngSubmit)="createDivison(divisionName)">
+          <div class="form-group">
+          <label for="divisionName">Division Name</label>
+          <input NgModel name="divisionName"  #divisionName type="text" class="form-control">
+        </div>
+        <button class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+  </div>
