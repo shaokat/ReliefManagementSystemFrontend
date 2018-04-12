@@ -27,8 +27,16 @@ export class DataService {
       .catch(this.handleError);    
   }
 
-  create(resource,exURL:string) {
+  createDivision(resource,exURL:string) {
     return this.http.post(this.url+exURL,resource)
+      .map(response => response.json())
+      .catch(this.handleError)
+      .subscribe();
+  }
+
+  create(resource,extURL:[string,string],id) {
+    let newUrl = this.url+extURL[0]+'/'+id+''+extURL[1];
+    return this.http.post(newUrl,resource)
       .map(response => response.json())
       .catch(this.handleError)
       .subscribe();

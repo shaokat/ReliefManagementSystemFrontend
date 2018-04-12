@@ -1,3 +1,4 @@
+import { UpazillaShowComponent } from './upazilla-show/upazilla-show.component';
 import { AreaService } from './services/division.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
@@ -9,7 +10,7 @@ import { DivisionCreateComponent } from './division-create/division-create.compo
 import { DivisionShowComponent } from './division-show/division-show.component';
 import { HttpModule } from '@angular/http';
 import { DistrictShowComponent } from './district-show/district-show.component';
-import { UpazillaShowComponent } from './upazilla-show/upazilla-show.component';
+import { DistrictCreateComponent } from './district-create/district-create.component';
 
 
 @NgModule({
@@ -18,18 +19,19 @@ import { UpazillaShowComponent } from './upazilla-show/upazilla-show.component';
     DivisionCreateComponent,
     DivisionShowComponent,
     DistrictShowComponent,
-    UpazillaShowComponent
+    DistrictCreateComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     RouterModule.forRoot([
-      {path: 'showDivisions', component: DivisionShowComponent},
-      {path: 'addDivision', component: DivisionCreateComponent},
-      {path: 'addDistrict', component: DistrictShowComponent},
-      {path: 'upazillas/show', component: UpazillaShowComponent}
-    ])
+      {path: 'division/show', component: DivisionShowComponent},
+      {path: 'division/add', component: DivisionCreateComponent},
+      {path: 'district/show', component: DistrictShowComponent},
+      {path: 'district/add', component: DistrictCreateComponent},
+      {path: '/upazilla/show', component: UpazillaShowComponent}
+    ]),
 
   ],
   providers: [AreaService],
