@@ -2,11 +2,11 @@
   <h5 class="card-header bg-light text-black">Selections for Upazillas</h5>
   <div class="card-body">
 <label for="dvision">Divisions</label>
-<select [ngModel]="selectedDivision" (ngModelChange)="getDistricts($event)" name="division" class="form-control">
+<select #selectedDivision [ngModel]="selectedDivision" (ngModelChange)="getDistricts($event)" name="division" class="form-control">
   <option *ngFor="let division of divisions" [value]="division.id">{{division.name}}</option>
 </select>
 <label for="district">districts</label>
-<select [ngModel]="selectedDistrict" (ngModelChange)="getUpazillas($event)" name="upazillas" class="form-control">
+<select #selectedDistrict [ngModel]="selectedDistrict" (ngModelChange)="getUpazillas($event)" name="upazillas" class="form-control">
   <option *ngFor="let district of districts" [value]="district.id">
     {{district.name}}
   </option>

@@ -11,6 +11,8 @@ import { HttpModule } from '@angular/http';
 import { DistrictShowComponent } from './district-show/district-show.component';
 import { DistrictCreateComponent } from './district-create/district-create.component';
 import { UpazillaCreateComponent } from './upazilla-create/upazilla-create.component';
+import { UnionShowComponent } from './union-show/union-show.component';
+import { UnionCreateComponent } from './union-create/union-create.component';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { UpazillaCreateComponent } from './upazilla-create/upazilla-create.compo
     DistrictShowComponent,
     DistrictCreateComponent,
     UpazillaShowComponent,
-    UpazillaCreateComponent
+    UpazillaCreateComponent,
+    UnionShowComponent,
+    UnionCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +37,10 @@ import { UpazillaCreateComponent } from './upazilla-create/upazilla-create.compo
       {path: 'district/show', component: DistrictShowComponent},
       {path: 'district/add', component: DistrictCreateComponent},
       {path: 'upazillas/show', component: UpazillaShowComponent},
-      {path: 'upazillas/add', component: UpazillaCreateComponent}
+      {path: 'upazillas/add', component: UpazillaCreateComponent},
+      {path: 'unions/show', component: UnionShowComponent},
+      {path: 'unions/add', component: UnionCreateComponent},
+
     ])
 
   ],
