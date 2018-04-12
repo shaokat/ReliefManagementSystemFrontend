@@ -10,6 +10,7 @@ import { DivisionShowComponent } from './division-show/division-show.component';
 import { HttpModule } from '@angular/http';
 import { DistrictShowComponent } from './district-show/district-show.component';
 import { DistrictCreateComponent } from './district-create/district-create.component';
+import { UpazillaCreateComponent } from './upazilla-create/upazilla-create.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { DistrictCreateComponent } from './district-create/district-create.compo
     DivisionShowComponent,
     DistrictShowComponent,
     DistrictCreateComponent,
-    UpazillaShowComponent
+    UpazillaShowComponent,
+    UpazillaCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +32,8 @@ import { DistrictCreateComponent } from './district-create/district-create.compo
       {path: 'division/add', component: DivisionCreateComponent},
       {path: 'district/show', component: DistrictShowComponent},
       {path: 'district/add', component: DistrictCreateComponent},
-      {path: 'upazillas/show', component: UpazillaShowComponent}
+      {path: 'upazillas/show', component: UpazillaShowComponent},
+      {path: 'upazillas/add', component: UpazillaCreateComponent}
     ])
 
   ],

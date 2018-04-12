@@ -1,7 +1,7 @@
 <div class="card" style="width: 18rem;">
   <h5 class="card-header bg-light text-black">Create District</h5>
   <div class="card-body">
-  
+
     <form #f="ngForm" (ngSubmit)="crateDistrict(f)">
         <label for="dvision">Division</label>
         <select [ngModel]="selectedDivision" name="division" class="form-control">
