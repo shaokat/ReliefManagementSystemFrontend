@@ -1,3 +1,4 @@
+import { DisasterService } from './services/disaster.service';
 import { UpazillaShowComponent } from './upazilla-show/upazilla-show.component';
 import { AreaService } from './services/division.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -44,7 +45,7 @@ import { UnionCreateComponent } from './union-create/union-create.component';
     ])
 
   ],
-  providers: [AreaService],
+  providers: [AreaService, DisasterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

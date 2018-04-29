@@ -13,30 +13,30 @@ import 'rxjs/add/observable/throw';
 export class DataService {
   constructor(private url: string, private http: Http) { }
 
-  getAll(extUrl:string) {
-    return this.http.get(this.url+extUrl)
+  getAll(extUrl: string) {
+    return this.http.get(this.url + extUrl)
       .map(response => response.json())
       .catch(this.handleError);
   }
 
-  getById(extUrl:[string,string],id) { 
-    let newUrl = this.url+extUrl[0]+'/'+id+''+extUrl[1];
+  getById(extUrl: [string, string], id) {
+    const newUrl = this.url + extUrl[0] + '/' + id + '' + extUrl[1];
     //console.log(newUrl)
     return this.http.get(newUrl)
       .map(response => response.json())
-      .catch(this.handleError);    
+      .catch(this.handleError);
   }
 
-  createDivision(resource,exURL:string) {
-    return this.http.post(this.url+exURL,resource)
+  createWithoutID(resource, exURL: string) {
+    return this.http.post(this.url + exURL, resource)
       .map(response => response.json())
       .catch(this.handleError)
       .subscribe();
   }
 
-  create(resource,extURL:[string,string],id) {
-    let newUrl = this.url+extURL[0]+'/'+id+''+extURL[1];
-    return this.http.post(newUrl,resource)
+  create(resource, extURL: [string, string], id) {
+    const newUrl = this.url + extURL[0] + '/' + id + '' + extURL[1];
+    return this.http.post(newUrl, resource)
       .map(response => response.json())
       .catch(this.handleError)
       .subscribe();
@@ -44,7 +44,7 @@ export class DataService {
 
   update(resource) {
     return this.http.patch(this.url + '/' + resource.id, JSON.stringify({ isRead: true }))
-      .map(response => response.json())      
+      .map(response => response.json())
       .catch(this.handleError);
   }
 
@@ -56,12 +56,12 @@ export class DataService {
   }
 
   private handleError(error: Response) {
-    if (error.status === 400)
+    if (error.status === 400) {
       return Observable.throw(new BadInput(error.json()));
-  
-    if (error.status === 404)
+    }
+    if (error.status === 404) {
       return Observable.throw(new NotFoundError());
-    
+    }
     return Observable.throw(new AppError(error));
   }
 }
