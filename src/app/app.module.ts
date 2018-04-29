@@ -1,3 +1,4 @@
+import { UpazillaShowComponent } from './upazilla-show/upazilla-show.component';
 import { AreaService } from './services/division.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
@@ -9,8 +10,10 @@ import { DivisionShowComponent } from './division-show/division-show.component';
 import { HttpModule } from '@angular/http';
 import { DistrictShowComponent } from './district-show/district-show.component';
 import { DistrictCreateComponent } from './district-create/district-create.component';
-import { UpazillaShowComponent } from './upazilla-show/upazilla-show.component';
 import { UnionShowComponent } from './union-show/union-show.component';
+import { UpazillaCreateComponent } from './upazilla-create/upazilla-create.component';
+import { DivisionUpdateComponent } from './division-update/division-update.component';
+import { DistrictUpadateComponent } from './district-upadate/district-upadate.component';
 
 
 @NgModule({
@@ -21,7 +24,10 @@ import { UnionShowComponent } from './union-show/union-show.component';
     DistrictShowComponent,
     DistrictCreateComponent,
     UpazillaShowComponent,
-    UnionShowComponent
+    UnionShowComponent,
+    UpazillaCreateComponent,
+    DivisionUpdateComponent,
+    DistrictUpadateComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +39,9 @@ import { UnionShowComponent } from './union-show/union-show.component';
       {path: 'district/show', component: DistrictShowComponent},
       {path: 'district/add', component: DistrictCreateComponent},
       {path: 'upazillas/show', component: UpazillaShowComponent},
-      {path: 'unions/show', component: UnionShowComponent}
+      {path: 'unions/show', component: UnionShowComponent},
+      {path: 'upazillas/add', component: UpazillaCreateComponent},
+      {path: 'divdision/update/:divisionId', component: DivisionUpdateComponent}
     ])
 
   ],

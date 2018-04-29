@@ -16,7 +16,7 @@ districts: any[];
     .subscribe(divisions => this.divisions = divisions);
   }
   getDistricts(divisoion) {
-    this.service.getById(['/division', '/districts'], divisoion)
+    this.service.getAllById(['/division', '/districts'], divisoion)
     .subscribe(districts => this.districts = districts);
   }
 

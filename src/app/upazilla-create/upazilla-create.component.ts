@@ -1,12 +1,12 @@
+import { AreaService } from './../services/division.service';
 import { Component, OnInit } from '@angular/core';
-import { AreaService } from '../services/division.service';
 
 @Component({
-  selector: 'app-upazilla-show',
-  templateUrl: './upazilla-show.component.html',
-  styleUrls: ['./upazilla-show.component.css']
+  selector: 'app-upazilla-create',
+  templateUrl: './upazilla-create.component.html',
+  styleUrls: ['./upazilla-create.component.css']
 })
-export class UpazillaShowComponent implements OnInit {
+export class UpazillaCreateComponent implements OnInit {
 
   divisions: any[];
   districts: any[];
@@ -26,11 +26,11 @@ export class UpazillaShowComponent implements OnInit {
     .subscribe(districts => this.districts = districts);
   }
 
-  getUpazillas(distId) {
-    console.log('method called with ' + distId);
-    this.service
-    .getAllById(['/district', '/upazillas'], distId)
-    .subscribe(upazillas => this.upazillas = upazillas);
+  createUpazilla(form) {
+    const district = form.value.district;
+    const upazilla = {name: form.value.upazillaName};
+    this.service.create(upazilla, ['/district', '/upazilla'], district);
   }
+
 
 }

@@ -19,12 +19,19 @@ export class DataService {
       .catch(this.handleError);
   }
 
-  getById(extUrl:[string,string],id) { 
+  getAllById(extUrl:[string,string],id) { 
     let newUrl = this.url+extUrl[0]+'/'+id+''+extUrl[1];
     //console.log(newUrl)
     return this.http.get(newUrl)
       .map(response => response.json())
       .catch(this.handleError);    
+  }
+  getById(extUrl: String, id){
+    const newUrl = this.url + extUrl + '/' + id;
+    console.log(newUrl)
+    return this.http.get(newUrl)
+      .map(response => response.json())
+      .catch(this.handleError);
   }
 
   createDivision(resource,exURL:string) {
@@ -42,10 +49,12 @@ export class DataService {
       .subscribe();
   }
 
-  update(resource) {
-    return this.http.patch(this.url + '/' + resource.id, JSON.stringify({ isRead: true }))
-      .map(response => response.json())      
-      .catch(this.handleError);
+  update(resource, extURl: string) {
+    const newUrl = this.url + extURl;
+    return this.http.patch(newUrl, resource)
+      .map(response => response.json())
+      .catch(this.handleError)
+      .subscribe();
   }
 
   delete(id) {

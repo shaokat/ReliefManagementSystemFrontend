@@ -16,8 +16,8 @@ export class DivisionShowComponent implements OnInit {
 
   ngOnInit() {
     this.service.getAll("/divisions")
-    .subscribe(divisions=>this.divisions=divisions)
-    
+    .subscribe( divisions => this.divisions = divisions );
+    console.log(this.divisions);
   }
 
 }
