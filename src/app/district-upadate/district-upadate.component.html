@@ -1,0 +1,17 @@
+<div class="card" style="width: 18rem;">
+  <h5 class="card-header bg-light text-black">Create District</h5>
+  <div class="card-body">
+
+    <form #f="ngForm" (ngSubmit)="crateDistrict(f)">
+        <label for="dvision">Division</label>
+        <select [ngModel]="selectedDivision" name="division" class="form-control">
+          <option *ngFor="let division of divisions" [value]="division.id">{{division.name}}</option>
+        </select>
+        <div class="form-group">
+        <label for="districtName">District Name</label>
+        <input ngModel name="districtName"  #districtName="ngModel" type="text" class="form-control">
+      </div>
+      <button class="btn btn-primary">Submit</button>
+      </form>
+  </div>
+</div>

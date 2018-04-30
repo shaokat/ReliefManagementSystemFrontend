@@ -22,7 +22,7 @@ export class UpazillaCreateComponent implements OnInit {
 
   getDistricts(divId) {
     this.service
-    .getById(['/division', '/districts'], divId)
+    .getAllById(['/division', '/districts'], divId)
     .subscribe(districts => this.districts = districts);
   }
 

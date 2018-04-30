@@ -1,3 +1,4 @@
+import { DisasterCreateComponent } from './disaster-create/disaster-create.component';
 import { DisasterService } from './services/disaster.service';
 import { UpazillaShowComponent } from './upazilla-show/upazilla-show.component';
 import { AreaService } from './services/division.service';
@@ -11,9 +12,11 @@ import { DivisionShowComponent } from './division-show/division-show.component';
 import { HttpModule } from '@angular/http';
 import { DistrictShowComponent } from './district-show/district-show.component';
 import { DistrictCreateComponent } from './district-create/district-create.component';
-import { UpazillaCreateComponent } from './upazilla-create/upazilla-create.component';
 import { UnionShowComponent } from './union-show/union-show.component';
 import { UnionCreateComponent } from './union-create/union-create.component';
+import { UpazillaCreateComponent } from './upazilla-create/upazilla-create.component';
+import { DivisionUpdateComponent } from './division-update/division-update.component';
+import { DistrictUpadateComponent } from './district-upadate/district-upadate.component';
 
 
 @NgModule({
@@ -26,7 +29,11 @@ import { UnionCreateComponent } from './union-create/union-create.component';
     UpazillaShowComponent,
     UpazillaCreateComponent,
     UnionShowComponent,
-    UnionCreateComponent
+    UnionCreateComponent,
+    UpazillaCreateComponent,
+    DivisionUpdateComponent,
+    DistrictUpadateComponent,
+    DisasterCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +49,10 @@ import { UnionCreateComponent } from './union-create/union-create.component';
       {path: 'unions/show', component: UnionShowComponent},
       {path: 'unions/add', component: UnionCreateComponent},
 
+      {path: 'unions/show', component: UnionShowComponent},
+      {path: 'upazillas/add', component: UpazillaCreateComponent},
+      {path: 'divdision/update/:divisionId', component: DivisionUpdateComponent},
+      {path: 'disaster/create', component: DisasterCreateComponent}
     ])
 
   ],

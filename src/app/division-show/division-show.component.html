@@ -10,7 +10,10 @@
             <td> {{ division.name }}</td>
             <td><button 
               (click)="deletePost(division)"
-              class="btn btn-default btn-sm">Delete</button></td>
+              class="btn btn-default btn-sm">Delete</button>
+              <button 
+                [routerLink]="['/divdision/update',division.id]"
+                class="btn btn-default btn-sm">Update</button></td>
       </tr>
      
     </tbody>

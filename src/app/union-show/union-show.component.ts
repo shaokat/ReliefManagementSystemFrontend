@@ -21,18 +21,18 @@ export class UnionShowComponent implements OnInit {
 
   getDistricts(divId) {
     this.service
-    .getById(['/division', '/districts'], divId)
+    .getAllById(['/division', '/districts'], divId)
     .subscribe(districts => this.districts = districts);
   }
 
   getUpazillas(distId) {
     console.log('method called with ' + distId);
     this.service
-    .getById(['/district', '/upazillas'], distId)
+    .getAllById(['/district', '/upazillas'], distId)
     .subscribe(upazillas => this.upazillas = upazillas);
   }
   getUnions(upazillaId) {
-    this.service.getById(['/upazilla', '/unions'], upazillaId)
+    this.service.getAllById(['/upazilla', '/unions'], upazillaId)
     .subscribe(unions => this.unions = unions);
 
   }
