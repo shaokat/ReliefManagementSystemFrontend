@@ -12,13 +12,15 @@ export class DivisionUpdateComponent implements OnInit {
   constructor(private service: AreaService, private rooute: ActivatedRoute) { }
   divisiond: any;
   divisionId: number;
+  current_options: any[];
+  all_options: any[];
+
   ngOnInit() {
     this.rooute.paramMap
     .subscribe(params => {
       this.divisionId = +params.get('divisionId');
      //  console.log(id);
     });
-
     this.service.getById('/division', this.divisionId)
     .subscribe(division => this.divisiond = division);
     console.log(this.divisiond);

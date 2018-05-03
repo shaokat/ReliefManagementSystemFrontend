@@ -19,7 +19,11 @@
           <td> {{ district.name }}</td>
           <td><button 
             (click)="deletePost(district)"
-            class="btn btn-default btn-sm">Delete</button></td>
+            class="btn btn-default btn-sm">Delete</button>
+            <button 
+            [routerLink]="['/district/update',district.id]"
+            class="btn btn-default btn-sm">Update</button>
+          </td>
     </tr>
    
   </tbody>

@@ -26,7 +26,7 @@ export class UpazillaCreateComponent implements OnInit {
     .subscribe(districts => this.districts = districts);
   }
 
-  createUpazilla(form) {
+createUpazilla(form) {
     const district = form.value.district;
     const upazilla = {name: form.value.upazillaName};
     this.service.create(upazilla, ['/district', '/upazilla'], district);
