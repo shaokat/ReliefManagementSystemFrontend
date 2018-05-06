@@ -32,7 +32,11 @@
     <tr  *ngFor="let union of unions">
         <td> {{ union.name }}</td>
         <td><button
-          class="btn btn-default btn-sm">Delete</button></td>
+          class="btn btn-default btn-sm">Delete</button>
+          <button 
+          [routerLink]="['/union/update',union.id]"
+          class="btn btn-default btn-sm">Update</button>
+        </td>
   </tr>
 
 </tbody>

@@ -51,6 +51,7 @@ export class DataService {
 
   update(resource, extURl: string) {
     const newUrl = this.url + extURl;
+    console.log(newUrl);
     return this.http.patch(newUrl, resource)
       .map(response => response.json())
       .catch(this.handleError)

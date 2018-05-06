@@ -14,6 +14,10 @@ import { UnionShowComponent } from './union-show/union-show.component';
 import { UpazillaCreateComponent } from './upazilla-create/upazilla-create.component';
 import { DivisionUpdateComponent } from './division-update/division-update.component';
 import { DistrictUpadateComponent } from './district-upadate/district-upadate.component';
+import { UnionCreateComponent } from './union-create/union-create.component';
+import { UpazillaUpdateComponent } from './upazilla-update/upazilla-update.component';
+import { UnionUpdateComponent } from './union-update/union-update.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -27,23 +31,31 @@ import { DistrictUpadateComponent } from './district-upadate/district-upadate.co
     UnionShowComponent,
     UpazillaCreateComponent,
     DivisionUpdateComponent,
-    DistrictUpadateComponent
+    DistrictUpadateComponent,
+    UnionCreateComponent,
+    UpazillaUpdateComponent,
+    UnionUpdateComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     RouterModule.forRoot([
+      {path: '', component: HomeComponent},
       {path: 'division/show', component: DivisionShowComponent},
       {path: 'division/add', component: DivisionCreateComponent},
+      {path: 'division/update/:divisionId', component: DivisionUpdateComponent},
       {path: 'district/show', component: DistrictShowComponent},
       {path: 'district/add', component: DistrictCreateComponent},
+      {path: 'district/update/:districtId', component: DistrictUpadateComponent},
       {path: 'upazillas/show', component: UpazillaShowComponent},
+      {path: 'upazilla/add', component: UpazillaCreateComponent},
+      {path: 'upazilla/update/:upazillaId', component: UpazillaUpdateComponent},
       {path: 'unions/show', component: UnionShowComponent},
-      {path: 'upazillas/add', component: UpazillaCreateComponent},
-      {path: 'divdision/update/:divisionId', component: DivisionUpdateComponent}
+      {path: 'union/add', component: UnionCreateComponent},
+      {path: 'union/update/:unionId', component: UnionUpdateComponent}
     ])
-
   ],
   providers: [AreaService],
   bootstrap: [AppComponent]
