@@ -11,20 +11,20 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./division-create.component.css']
 })
 export class DivisionCreateComponent implements OnInit {
-private divisionName:any
+private divisionName: any;
   constructor(private service: AreaService) { }
 
   ngOnInit() {
   }
-  createDivison(input: NgForm){
-    
-    let division = { name: input.value };
+  createDivison(input: NgForm) {
+
+    const division = { name: input.value };
     console.log(division);
-    this.service.createDivision(division,"/division");
+    this.service.createWithoutID(division, '/division');
   }
-  show(divi:NgForm){
-    let division1 = { name: divi.value };
+  show(divi: NgForm) {
+    const division1 = { name: divi.value };
     console.log(division1);
-    //console.log(divi.value);
+    // console.log(divi.value);
   }
 }

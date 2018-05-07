@@ -1,7 +1,7 @@
 import { BadInput } from './../common/bad-input';
 import { NotFoundError } from './../common/not-found-error';
 import { AppError } from './../common/app-error';
-import { Http,Headers, RequestOptions} from '@angular/http';
+import { Http, Headers, RequestOptions} from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
@@ -13,37 +13,45 @@ import 'rxjs/add/observable/throw';
 export class DataService {
   constructor(private url: string, private http: Http) { }
 
-  getAll(extUrl:string) {
-    return this.http.get(this.url+extUrl)
+  getAll(extUrl: string) {
+    return this.http.get(this.url + extUrl)
       .map(response => response.json())
       .catch(this.handleError);
   }
 
-  getAllById(extUrl:[string,string],id) { 
-    let newUrl = this.url+extUrl[0]+'/'+id+''+extUrl[1];
-    //console.log(newUrl)
+  getAllById(extUrl: [string, string], id) {
+    const newUrl = this.url + extUrl[0] + '/' + id + '' + extUrl[1];
+    // console.log(newUrl)
     return this.http.get(newUrl)
       .map(response => response.json())
-      .catch(this.handleError);    
+      .catch(this.handleError);
   }
-  getById(extUrl: String, id){
+  getById(extUrl: String, id) {
     const newUrl = this.url + extUrl + '/' + id;
-    console.log(newUrl)
+    console.log(newUrl);
     return this.http.get(newUrl)
       .map(response => response.json())
       .catch(this.handleError);
   }
 
-  createDivision(resource,exURL:string) {
-    return this.http.post(this.url+exURL,resource)
+  createWithoutID(resource, exURL: string) {
+    return this.http.post(this.url + exURL, resource)
       .map(response => response.json())
       .catch(this.handleError)
       .subscribe();
   }
 
-  create(resource,extURL:[string,string],id) {
-    let newUrl = this.url+extURL[0]+'/'+id+''+extURL[1];
-    return this.http.post(newUrl,resource)
+  create(resource, extURL: [string, string], id) {
+    const newUrl = this.url + extURL[0] + '/' + id + '' + extURL[1];
+    return this.http.post(newUrl, resource)
+      .map(response => response.json())
+      .catch(this.handleError)
+      .subscribe();
+  }
+
+  createWithDateString(resource, extURL: string, time: string) {
+    const newUrl = this.url + extURL + '/' + time;
+    return this.http.post(newUrl, resource)
       .map(response => response.json())
       .catch(this.handleError)
       .subscribe();
@@ -66,12 +74,12 @@ export class DataService {
   }
 
   private handleError(error: Response) {
-    if (error.status === 400)
+    if (error.status === 400) {
       return Observable.throw(new BadInput(error.json()));
-  
-    if (error.status === 404)
+    }
+    if (error.status === 404) {
       return Observable.throw(new NotFoundError());
-    
+    }
     return Observable.throw(new AppError(error));
   }
 }
