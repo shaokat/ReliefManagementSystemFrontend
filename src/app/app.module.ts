@@ -13,7 +13,6 @@ import { HttpModule } from '@angular/http';
 import { DistrictShowComponent } from './district-show/district-show.component';
 import { DistrictCreateComponent } from './district-create/district-create.component';
 import { UnionShowComponent } from './union-show/union-show.component';
-<<<<<<< HEAD
 import { UpazillaCreateComponent } from './upazilla-create/upazilla-create.component';
 import { DivisionUpdateComponent } from './division-update/division-update.component';
 import { DistrictUpadateComponent } from './district-upadate/district-upadate.component';
@@ -21,12 +20,6 @@ import { UnionCreateComponent } from './union-create/union-create.component';
 import { UpazillaUpdateComponent } from './upazilla-update/upazilla-update.component';
 import { UnionUpdateComponent } from './union-update/union-update.component';
 import { HomeComponent } from './home/home.component';
-=======
-import { UnionCreateComponent } from './union-create/union-create.component';
-import { UpazillaCreateComponent } from './upazilla-create/upazilla-create.component';
-import { DivisionUpdateComponent } from './division-update/division-update.component';
-import { DistrictUpadateComponent } from './district-upadate/district-upadate.component';
->>>>>>> 266540c3375c3637536514965cfc55b39ac66ead
 
 
 @NgModule({
@@ -37,7 +30,6 @@ import { DistrictUpadateComponent } from './district-upadate/district-upadate.co
     DistrictShowComponent,
     DistrictCreateComponent,
     UpazillaShowComponent,
-<<<<<<< HEAD
     UnionShowComponent,
     UpazillaCreateComponent,
     DivisionUpdateComponent,
@@ -45,16 +37,8 @@ import { DistrictUpadateComponent } from './district-upadate/district-upadate.co
     UnionCreateComponent,
     UpazillaUpdateComponent,
     UnionUpdateComponent,
-    HomeComponent
-=======
-    UpazillaCreateComponent,
-    UnionShowComponent,
-    UnionCreateComponent,
-    UpazillaCreateComponent,
-    DivisionUpdateComponent,
-    DistrictUpadateComponent,
+    HomeComponent,
     DisasterCreateComponent
->>>>>>> 266540c3375c3637536514965cfc55b39ac66ead
   ],
   imports: [
     BrowserModule,
@@ -69,22 +53,12 @@ import { DistrictUpadateComponent } from './district-upadate/district-upadate.co
       {path: 'district/add', component: DistrictCreateComponent},
       {path: 'district/update/:districtId', component: DistrictUpadateComponent},
       {path: 'upazillas/show', component: UpazillaShowComponent},
-<<<<<<< HEAD
       {path: 'upazilla/add', component: UpazillaCreateComponent},
       {path: 'upazilla/update/:upazillaId', component: UpazillaUpdateComponent},
       {path: 'unions/show', component: UnionShowComponent},
       {path: 'union/add', component: UnionCreateComponent},
-      {path: 'union/update/:unionId', component: UnionUpdateComponent}
-=======
-      {path: 'upazillas/add', component: UpazillaCreateComponent},
-      {path: 'unions/show', component: UnionShowComponent},
-      {path: 'unions/add', component: UnionCreateComponent},
-
-      {path: 'unions/show', component: UnionShowComponent},
-      {path: 'upazillas/add', component: UpazillaCreateComponent},
-      {path: 'divdision/update/:divisionId', component: DivisionUpdateComponent},
+      {path: 'union/update/:unionId', component: UnionUpdateComponent},
       {path: 'disaster/create', component: DisasterCreateComponent}
->>>>>>> 266540c3375c3637536514965cfc55b39ac66ead
     ])
   ],
   providers: [AreaService, DisasterService],
