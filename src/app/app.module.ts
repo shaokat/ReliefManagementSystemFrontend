@@ -19,6 +19,10 @@ import { DivisionUpdateComponent } from './division-update/division-update.compo
 import { DistrictUpadateComponent } from './district-upadate/district-upadate.component';
 import { DisasterShowComponent } from './disaster-show/disaster-show.component';
 import { DisasterUpdateComponent } from './disaster-update/disaster-update.component';
+import { OrganizationCreateComponent } from './organization-create/organization-create.component';
+import { OrganizationService } from './services/organization.service';
+import { OrganizationShowComponent } from './organization-show/organization-show.component';
+import { OrganizationUpdateComponent } from './organization-update/organization-update.component';
 
 
 @NgModule({
@@ -37,7 +41,10 @@ import { DisasterUpdateComponent } from './disaster-update/disaster-update.compo
     DistrictUpadateComponent,
     DisasterCreateComponent,
     DisasterShowComponent,
-    DisasterUpdateComponent
+    DisasterUpdateComponent,
+    OrganizationCreateComponent,
+    OrganizationShowComponent,
+    OrganizationUpdateComponent
   ],
   imports: [
     BrowserModule,
@@ -56,13 +63,18 @@ import { DisasterUpdateComponent } from './disaster-update/disaster-update.compo
       {path: 'unions/show', component: UnionShowComponent},
       {path: 'upazillas/add', component: UpazillaCreateComponent},
       {path: 'divdision/update/:divisionId', component: DivisionUpdateComponent},
+
       {path: 'disaster/create', component: DisasterCreateComponent},
       {path: 'disaster/show', component: DisasterShowComponent},
-      {path: 'disaster/update/:disasterId', component: DisasterUpdateComponent}
+      {path: 'disaster/update/:disasterId', component: DisasterUpdateComponent},
+
+      {path: 'organization/create', component: OrganizationCreateComponent},
+      {path: 'organization/show', component: OrganizationShowComponent},
+      {path: 'organization/update/:orgId', component: OrganizationUpdateComponent},
     ])
 
   ],
-  providers: [AreaService, DisasterService],
+  providers: [AreaService, DisasterService, OrganizationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
