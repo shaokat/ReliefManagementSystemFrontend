@@ -51,6 +51,7 @@ export class DataService {
 
   createWithDateString(resource, extURL: string, time: string) {
     const newUrl = this.url + extURL + '/' + time;
+    console.log(newUrl);
     return this.http.post(newUrl, resource)
       .map(response => response.json())
       .catch(this.handleError)
@@ -66,8 +67,8 @@ export class DataService {
       .subscribe();
   }
 
-  delete(id) {
-    return this.http.delete(this.url + '/' + id)
+  delete(extUrl: string, id) {
+    return this.http.delete(this.url + extUrl + '/' + id)
       .map(response => response.json())
       .toPromise()
       .catch(this.handleError);
