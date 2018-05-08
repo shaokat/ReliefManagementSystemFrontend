@@ -17,6 +17,8 @@ import { UnionCreateComponent } from './union-create/union-create.component';
 import { UpazillaCreateComponent } from './upazilla-create/upazilla-create.component';
 import { DivisionUpdateComponent } from './division-update/division-update.component';
 import { DistrictUpadateComponent } from './district-upadate/district-upadate.component';
+import { DisasterShowComponent } from './disaster-show/disaster-show.component';
+import { DisasterUpdateComponent } from './disaster-update/disaster-update.component';
 
 
 @NgModule({
@@ -33,7 +35,9 @@ import { DistrictUpadateComponent } from './district-upadate/district-upadate.co
     UpazillaCreateComponent,
     DivisionUpdateComponent,
     DistrictUpadateComponent,
-    DisasterCreateComponent
+    DisasterCreateComponent,
+    DisasterShowComponent,
+    DisasterUpdateComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +56,9 @@ import { DistrictUpadateComponent } from './district-upadate/district-upadate.co
       {path: 'unions/show', component: UnionShowComponent},
       {path: 'upazillas/add', component: UpazillaCreateComponent},
       {path: 'divdision/update/:divisionId', component: DivisionUpdateComponent},
-      {path: 'disaster/create', component: DisasterCreateComponent}
+      {path: 'disaster/create', component: DisasterCreateComponent},
+      {path: 'disaster/show', component: DisasterShowComponent},
+      {path: 'disaster/update/:disasterId', component: DisasterUpdateComponent}
     ])
 
   ],

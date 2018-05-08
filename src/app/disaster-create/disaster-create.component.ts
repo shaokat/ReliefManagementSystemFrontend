@@ -13,12 +13,8 @@ export class DisasterCreateComponent implements OnInit {
   description: string;
   selectedType: string;
   distasterName: string;
-  dateOfOccurance: string;
-  record: DisasterRecord = {
-    name: '',
-    type: '',
-    description: ''
-  };
+  public dateOfOccurance: string;
+  record: DisasterRecord = new DisasterRecord();
 
   constructor(private service: DisasterService) { }
 
@@ -43,8 +39,11 @@ export class DisasterCreateComponent implements OnInit {
   }
 
 }
-class DisasterRecord {
+export class DisasterRecord {
+  id: number;
   name: String;
   type: string;
   description: string;
+  dateOfOccurance: {};
+  constructor() {}
 }
