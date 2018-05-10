@@ -32,51 +32,53 @@
                                 </a>
                             </li>
                             <li ngbDropdown class="nav-item dropdown">
-                                <a ngbDropdownToggle class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                                <a ngbDropdownToggle class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" aria-haspopup="true" data-toggle="dropdown" aria-haspopup="true"
                                     aria-expanded="false">
-                                    Division
+                                    Area
+                
                                 </a>
                                 <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" [routerLink]="['/division/add']">Add Division</a>
+    
+                                    <li class="dropdown-submenu">
+                                        <a  class="dropdown-item" tabindex="-1" href="#">Division</a>
+                                        <ul ngbDropdownMenu class="dropdown-menu">
+                    
+                                          <a class="dropdown-item" [routerLink]="['/division/add']">Add Division</a>
                                     <a class="dropdown-item" [routerLink]="['/division/show']">Show Division</a>
-                                </div>
-                            </li>
-                            <li ngbDropdown class="nav-item dropdown">
-                                <a ngbDropdownToggle class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">
-                                    District
-                                </a>
-
-                                <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" [routerLink]="['/district/add']">Add District</a>
+                                        </ul>
+                                      </li>
+    
+    
+                                    <li class="dropdown-submenu">
+                                        <a  class="dropdown-item" tabindex="-1" href="#">District</a>
+                                        <ul ngbDropdownMenu class="dropdown-menu">
+                    
+                                          <a class="dropdown-item" [routerLink]="['/district/add']">Add District</a>
                                     <a class="dropdown-item" [routerLink]="['/district/show']">Show District</a>
-                                </div>
+                                        </ul>
+                                      </li>
+                                      
+                                    <li class="dropdown-submenu">
+                                        <a  class="dropdown-item" tabindex="-1" href="#">Uazilla</a>
+                                        <ul ngbDropdownMenu class="dropdown-menu">
+                    
+                                          <a class="dropdown-item" [routerLink]="['/upazilla/add']">Add Upazilla</a>
+                                    <a class="dropdown-item" [routerLink]="['/upazilla/show']">Show Upazilla</a>
+                                        </ul>
+                                      </li>
 
-                            </li>
-                            <li ngbDropdown class="nav-item dropdown">
-                                <a ngbDropdownToggle class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">
-                                    Upazilla
-                                </a>
-
-                                <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" [routerLink]="['/upazilla/add']">Add Upazilla</a>
-                                    <a class="dropdown-item" [routerLink]="['/upazilla/show']">Another action</a>
-                                </div>
-
-                            </li>
-                            <li ngbDropdown class="nav-item dropdown">
-                                <a ngbDropdownToggle class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">
-                                    Union
-                                </a>
-
-                                <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" [routerLink]="['/union/add']">Add Union</a>
+                                      
+                                    <li class="dropdown-submenu">
+                                        <a  class="dropdown-item" tabindex="-1" href="#">Union</a>
+                                        <ul ngbDropdownMenu class="dropdown-menu">
+                    
+                                          <a class="dropdown-item" [routerLink]="['/union/add']">Add Union</a>
                                     <a class="dropdown-item" [routerLink]="['/union/show']">Show Union</a>
+                                        </ul>
+                                      </li>
                                 </div>
-
                             </li>
+                            
 
                             <li ngbDropdown class="nav-item dropdown">
                                 <a ngbDropdownToggle class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -97,6 +99,7 @@
                                 <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" [routerLink]="['/organization/add']">Add Organization</a>
                                     <a class="dropdown-item" [routerLink]="['/organization/show']">Show Organization</a>
+                                    
                                 </div>
 
                             </li>
@@ -162,7 +165,7 @@
     <!-- Footer -->
     <footer class="py-5 bg-dark">
         <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
+            <p class="m-0 text-center text-white">Copyright &copy; Your Website {{currentYear | date:'yyyy'}}</p>
         </div>
         <!-- /.container -->
     </footer>
