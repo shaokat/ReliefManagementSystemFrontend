@@ -19,9 +19,10 @@ divisions: any[];
     .subscribe(divisions => this.divisions = divisions);
   }
   crateDistrict(input) {
-    const division = input.value.division;
+    const division = input.value.divisionName;
     const district = { name: input.value.districtName };
     input.value.districtName = '';
+    console.log(division)
     this.service.create(district, ['/division', '/district'], division);
   }
 

@@ -1,0 +1,30 @@
+<div class="card" style="width: 18rem;">
+  <h5 class="card-header bg-light text-black">Selections for Upazillas</h5>
+  <div class="card-body">
+<label for="dvision">Divisions</label>
+<select [ngModel]="selectedDivision" (ngModelChange)="getDistricts($event)" name="division" class="form-control">
+  <option *ngFor="let division of divisions"
+  [ngValue]="division.id">{{division.name}}</option>
+</select>
+<label for="district">Districts</label>
+<select [ngModel]="selectedDistrict" (ngModelChange)="getUpazillas($event)" name="district" class="form-control">
+  <option *ngFor="let district of districts" [ngValue]="district.id">
+    {{district.name}}
+  </option>
+</select>
+<label for="upazilla">Upazilla</label>
+<select [ngModel]="selectUpazilla" (ngModelChange)="getUnions($event)" 
+  name="upazillas" class="form-control">
+  <option *ngFor="let upazilla of upazillas" [ngValue]="upazilla.id">
+    {{upazilla.name}}
+  </option>
+</select>
+<label for="union">Union</label>
+<select [ngModel]="selectUnion"
+  name="unions" class="form-control">
+  <option *ngFor="let union of unions" [ngValue]="union.id">
+    {{union.name}}
+  </option>
+</select>
+</div>
+</div>

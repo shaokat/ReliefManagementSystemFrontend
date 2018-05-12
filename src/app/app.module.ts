@@ -23,6 +23,7 @@ import { HomeComponent } from './home/home.component';
 import { DisasterUpdateComponent } from './disaster-update/disaster-update.component';
 import { DisasterShowComponent } from './disaster-show/disaster-show.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { ReliefRecordCreateComponent } from './relief-record-create/relief-record-create.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     HomeComponent,
     DisasterCreateComponent,
     DisasterShowComponent,
-    DisasterUpdateComponent
+    DisasterUpdateComponent,
+    ReliefRecordCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +69,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
       {path: 'union/update/:unionId', component: UnionUpdateComponent},
       {path: 'disaster/add', component: DisasterCreateComponent},
       {path: 'disaster/show', component: DisasterShowComponent},
-      {path: 'disaster/update/:disasterId', component: DisasterUpdateComponent}
+      {path: 'disaster/update/:disasterId', component: DisasterUpdateComponent},
+      {path: 'relief/add', component: ReliefRecordCreateComponent}
     ])
   ],
   providers: [AreaService, DisasterService],
