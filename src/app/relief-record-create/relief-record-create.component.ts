@@ -21,6 +21,7 @@ export class ReliefRecordCreateComponent implements OnInit {
   show: boolean = true;
   reliefType
   disasters: DisasterRecord[];
+  dateOfDisttribution
   constructor(private service: AreaService,private orgService: OrganizationService,private disasterService: DisasterService) { }
 
   ngOnInit() {
