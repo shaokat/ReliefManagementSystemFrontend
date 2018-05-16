@@ -17,7 +17,7 @@
             ' - '+disaster.dateOfOccurance['year'] }}</td>
 
           <td><button
-            (click)="deleteDisaster(disaster.id)"
+            (click)="deleteDisaster(disaster)"
             class="btn btn-default btn-sm">Delete</button>
             <button
               [routerLink]="['/disaster/update',disaster.id]"
@@ -27,4 +27,5 @@
 
   </tbody>
 </table>
+<button class="btn btn-primary" (click)="redirect()">redirect</button>
 

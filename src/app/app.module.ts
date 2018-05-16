@@ -21,9 +21,13 @@ import { UpazillaUpdateComponent } from './upazilla-update/upazilla-update.compo
 import { UnionUpdateComponent } from './union-update/union-update.component';
 import { HomeComponent } from './home/home.component';
 import { DisasterUpdateComponent } from './disaster-update/disaster-update.component';
+import { OrganizationCreateComponent } from './organization-create/organization-create.component';
+import { OrganizationService } from './services/organization.service';
+import { OrganizationShowComponent } from './organization-show/organization-show.component';
+import { OrganizationUpdateComponent } from './organization-update/organization-update.component';
 import { DisasterShowComponent } from './disaster-show/disaster-show.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ReliefRecordCreateComponent } from './relief-record-create/relief-record-create.component';
+import { NavarComponentComponent } from './navar-component/navar-component.component';
 
 
 @NgModule({
@@ -45,13 +49,16 @@ import { ReliefRecordCreateComponent } from './relief-record-create/relief-recor
     DisasterCreateComponent,
     DisasterShowComponent,
     DisasterUpdateComponent,
-    ReliefRecordCreateComponent
+    OrganizationCreateComponent,
+    OrganizationShowComponent,
+    OrganizationUpdateComponent,
+    ReliefRecordCreateComponent,
+    NavarComponentComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,                 
     ReactiveFormsModule,
-    NgbModule.forRoot(),
     HttpModule,
     RouterModule.forRoot([
       {path: '', component: HomeComponent},
@@ -60,20 +67,26 @@ import { ReliefRecordCreateComponent } from './relief-record-create/relief-recor
       {path: 'division/update/:divisionId', component: DivisionUpdateComponent},
       {path: 'district/show', component: DistrictShowComponent},
       {path: 'district/add', component: DistrictCreateComponent},
-      {path: 'district/update/:districtId', component: DistrictUpadateComponent},
-      {path: 'upazilla/show', component: UpazillaShowComponent},
-      {path: 'upazilla/add', component: UpazillaCreateComponent},
-      {path: 'upazilla/update/:upazillaId', component: UpazillaUpdateComponent},
-      {path: 'union/show', component: UnionShowComponent},
-      {path: 'union/add', component: UnionCreateComponent},
-      {path: 'union/update/:unionId', component: UnionUpdateComponent},
+      {path: 'upazillas/show', component: UpazillaShowComponent},
+      {path: 'upazillas/add', component: UpazillaCreateComponent},
+      {path: 'unions/show', component: UnionShowComponent},
+      {path: 'unions/add', component: UnionCreateComponent},
+
+      {path: 'unions/show', component: UnionShowComponent},
+      {path: 'upazillas/add', component: UpazillaCreateComponent},
+      {path: 'divdision/update/:divisionId', component: DivisionUpdateComponent},
+
       {path: 'disaster/add', component: DisasterCreateComponent},
       {path: 'disaster/show', component: DisasterShowComponent},
       {path: 'disaster/update/:disasterId', component: DisasterUpdateComponent},
+
+      {path: 'organization/create', component: OrganizationCreateComponent},
+      {path: 'organization/show', component: OrganizationShowComponent},
+      {path: 'organization/update/:orgId', component: OrganizationUpdateComponent},
       {path: 'relief/add', component: ReliefRecordCreateComponent}
     ])
   ],
-  providers: [AreaService, DisasterService],
+  providers: [AreaService, DisasterService, OrganizationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,7 +1,7 @@
 import { BadInput } from './../common/bad-input';
 import { NotFoundError } from './../common/not-found-error';
 import { AppError } from './../common/app-error';
-import { Http, Headers, RequestOptions} from '@angular/http';
+import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
@@ -15,7 +15,7 @@ export class DataService {
 
   getAll(extUrl: string) {
     return this.http.get(this.url + extUrl)
-      .map(response => response.json())
+      .map(this.extractedData)
       .catch(this.handleError);
   }
 
@@ -23,20 +23,20 @@ export class DataService {
     const newUrl = this.url + extUrl[0] + '/' + id + '' + extUrl[1];
     // console.log(newUrl)
     return this.http.get(newUrl)
-      .map(response => response.json())
+      .map(this.extractedData)
       .catch(this.handleError);
   }
   getById(extUrl: String, id) {
     const newUrl = this.url + extUrl + '/' + id;
     console.log(newUrl);
     return this.http.get(newUrl)
-      .map(response => response.json())
+      .map(this.extractedData)
       .catch(this.handleError);
   }
 
   createWithoutID(resource, exURL: string) {
     return this.http.post(this.url + exURL, resource)
-      .map(response => response.json())
+      .map(this.extractedData)
       .catch(this.handleError)
       .subscribe();
   }
@@ -44,7 +44,7 @@ export class DataService {
   create(resource, extURL: [string, string], id) {
     const newUrl = this.url + extURL[0] + '/' + id + '' + extURL[1];
     return this.http.post(newUrl, resource)
-      .map(response => response.json())
+      .map(this.extractedData)
       .catch(this.handleError)
       .subscribe();
   }
@@ -53,7 +53,7 @@ export class DataService {
     const newUrl = this.url + extURL + '/' + time;
     console.log(newUrl);
     return this.http.post(newUrl, resource)
-      .map(response => response.json())
+      .map(this.extractedData)
       .catch(this.handleError)
       .subscribe();
   }
@@ -62,15 +62,14 @@ export class DataService {
     const newUrl = this.url + extURl;
     console.log(newUrl);
     return this.http.patch(newUrl, resource)
-      .map(response => response.json())
+      .map(this.extractedData)
       .catch(this.handleError)
       .subscribe();
   }
 
   delete(extUrl: string, id) {
     return this.http.delete(this.url + extUrl + '/' + id)
-      .map(response => response.json())
-      .toPromise()
+      .map(this.extractedData)
       .catch(this.handleError);
   }
 
@@ -82,5 +81,8 @@ export class DataService {
       return Observable.throw(new NotFoundError());
     }
     return Observable.throw(new AppError(error));
+  }
+  private extractedData(res: Response) {
+    return res.text() ? res.json() : {};
   }
 }

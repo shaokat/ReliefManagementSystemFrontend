@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AreaService } from '../services/division.service';
+import { NgModule } from '@angular/core';
+import { Organization } from '../organization-create/organization-create.component';
+import { OrganizationService } from '../services/organization.service';
+import { DisasterRecord } from '../disaster-create/disaster-create.component';
+import { DisasterService } from '../services/disaster.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-relief-record-create',
@@ -7,17 +13,29 @@ import { AreaService } from '../services/division.service';
   styleUrls: ['./relief-record-create.component.css']
 })
 export class ReliefRecordCreateComponent implements OnInit {
-
+  organizations: Organization[];
   divisions: any[];
   districts: any[];
   upazillas: any[];
   unions: any[];
-  constructor(private service: AreaService) { }
+  show: boolean = true;
+  reliefType
+  disasters: DisasterRecord[];
+  constructor(private service: AreaService,private orgService: OrganizationService,private disasterService: DisasterService) { }
 
   ngOnInit() {
+    Observable.combineLatest([
+      this.service.getAll('/divisions'),
+      this.orgService.getAll('/all'),
+      this.disasterService.getAll('/all')
+    ]).subscribe(combined => {
+      this.divisions = combined[0];
+      this.organizations =<Organization[]>  combined[1];
+      this.disasters = <DisasterRecord[]> combined[2]
+    });
+    this.reliefType=true
     this.service
-    .getAll('/divisions')
-    .subscribe(divisions => this.divisions = divisions);
+    
   }
 
   getDistricts(divId) {
@@ -36,6 +54,9 @@ export class ReliefRecordCreateComponent implements OnInit {
     this.service.getAllById(['/upazilla', '/unions'], upazillaId)
     .subscribe(unions => this.unions = unions);
 
+  }
+  createRelief(){
+    console.log("works")
   }
 
 }
