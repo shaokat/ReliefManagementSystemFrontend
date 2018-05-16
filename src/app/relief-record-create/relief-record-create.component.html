@@ -78,7 +78,7 @@
       <div class="card-body">
           
           <label for="organization">Organization</label>
-          <select [ngModel]="selectedOrganization" name="organization" class="form-control">
+          <select ngModel="selectedOrganization" name="organization" class="form-control">
             <option *ngFor="let org of organizations" [ngValue]="org">
               {{org.nameAcronym}} ({{org.name}})
             </option>
@@ -92,7 +92,7 @@
             <div class="card-body">
                 
                 <label for="disaster">Disasterr</label>
-                <select [ngModel]="selectedDisaster" name="disaster" class="form-control">
+                <select ngModel="selectedDisaster" name="disaster" class="form-control">
                   <option *ngFor="let dis of disasters" [ngValue]="dis">
                     {{dis.name}}
                   </option>
