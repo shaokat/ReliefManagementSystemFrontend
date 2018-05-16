@@ -2,7 +2,7 @@
     <h5 class="card-header bg-light text-black">Districts</h5>
     <div class="card-body">
   <label for="dvision">Division</label>
-  <select [ngModel]="selectedDivision" (ngModelChange)="getDistricts($event)" name="division" class="form-control">
+  <select ngModel="selectedDivision" (ngModelChange)="getDistricts($event)" name="division" class="form-control">
     <option *ngFor="let division of divisions" [value]="division.id">{{division.name}}</option>
   </select>
 </div>
