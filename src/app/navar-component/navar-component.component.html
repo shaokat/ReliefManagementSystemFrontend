@@ -14,7 +14,7 @@
                               <span class="sr-only">(current)</span>
                           </a>
                       </li>
-                      <li ngbDropdown class="nav-item dropdown">
+                      <li *ngIf="auth.isLoggedIn()" ngbDropdown class="nav-item dropdown">
                           <a ngbDropdownToggle class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" aria-haspopup="true" data-toggle="dropdown" aria-haspopup="true"
                               aria-expanded="false">
                               Area
@@ -63,7 +63,7 @@
                       </li>
                       
 
-                      <li ngbDropdown class="nav-item dropdown">
+                      <li *ngIf="auth.isLoggedIn()" ngbDropdown class="nav-item dropdown">
                           <a ngbDropdownToggle class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                               aria-expanded="false">
                               Disaster
@@ -74,7 +74,7 @@
                           </div>
 
                       </li>
-                      <li ngbDropdown class="nav-item dropdown">
+                      <li *ngIf="auth.isLoggedIn()" ngbDropdown class="nav-item dropdown">
                           <a ngbDropdownToggle class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                               aria-expanded="false">
                               Organization
@@ -86,7 +86,7 @@
                           </div>
 
                       </li>
-                      <li ngbDropdown class="nav-item dropdown">
+                      <li *ngIf="auth.isLoggedIn()" ngbDropdown class="nav-item dropdown">
                               <a ngbDropdownToggle class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                                   aria-expanded="false">
                                   Relief
@@ -109,6 +109,8 @@
               <li class="nav-item">
                   <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
               </li>
+              <button *ngIf="auth.isLoggedIn()" class="btn btn-outline-success my-2 my-sm-0" (click)="auth.logout()">log out</button>
+              <button *ngIf="!auth.isLoggedIn()" class="btn btn-outline-success my-2 my-sm-0" [routerLink]="['/login']">log in</button>
           </ul>
       </div>
   </div>

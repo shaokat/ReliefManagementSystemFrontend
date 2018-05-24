@@ -6,6 +6,7 @@ import { OrganizationService } from '../services/organization.service';
 import { DisasterRecord } from '../disaster-create/disaster-create.component';
 import { DisasterService } from '../services/disaster.service';
 import { Observable } from 'rxjs/Observable';
+import { ReliefService } from '../services/relief.serivice';
 
 @Component({
   selector: 'app-relief-record-create',
@@ -18,11 +19,12 @@ export class ReliefRecordCreateComponent implements OnInit {
   districts: any[];
   upazillas: any[];
   unions: any[];
+  selectUnion:any
   show: boolean = true;
   reliefType
   disasters: DisasterRecord[];
   dateOfDisttribution
-  constructor(private service: AreaService,private orgService: OrganizationService,private disasterService: DisasterService) { }
+  constructor(private reliefService: ReliefService, private service: AreaService,private orgService: OrganizationService,private disasterService: DisasterService) { }
 
   ngOnInit() {
     Observable.combineLatest([
@@ -57,7 +59,10 @@ export class ReliefRecordCreateComponent implements OnInit {
 
   }
   createRelief(){
-    console.log("works")
+    let union ={id:this.selectUnion.id,name:this.selectUnion.name}
+    this.reliefService.createWithoutID(this.selectUnion,'/save');
+    console.log(union)
   }
+  
 
 }

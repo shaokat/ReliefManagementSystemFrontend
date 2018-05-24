@@ -2,13 +2,13 @@
     <thead class="thead-dark">
       <tr>
         <th scope="col">Division Name</th>
-        <th scope="col">Action</th>
+        <th scope="col" *ngIf="auth.isAdmin()">Action</th>
       </tr>
     </thead>
     <tbody>
         <tr  *ngFor="let division of divisions">
             <td> {{ division.name }}</td>
-            <td><button 
+            <td *ngIf="auth.isAdmin()"><button 
               (click)="deletePost(division)"
               class="btn btn-default btn-sm">Delete</button>
               <button 

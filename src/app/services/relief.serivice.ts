@@ -3,8 +3,8 @@ import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 
 @Injectable()
-export class AreaService extends DataService {
+export class ReliefService extends DataService {
   constructor(http: Http) {
-    super('http://localhost:8080/areas', http);
+    super('http://localhost:8080/reliefs', http);
    }
 }

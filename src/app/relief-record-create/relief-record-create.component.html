@@ -24,9 +24,9 @@
   </option>
 </select>
 <label for="union">Union</label>
-<select ngModel="selectUnion"
-  name="unions" class="form-control">
-  <option *ngFor="let union of unions" [ngValue]="union.id">
+<select [(ngModel)]="selectUnion"
+  name="selectUnion" class="form-control">
+  <option *ngFor="let union of unions" [ngValue]="union">
     {{union.name}}
   </option>
 </select>

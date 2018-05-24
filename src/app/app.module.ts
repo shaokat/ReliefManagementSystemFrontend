@@ -28,6 +28,15 @@ import { OrganizationUpdateComponent } from './organization-update/organization-
 import { DisasterShowComponent } from './disaster-show/disaster-show.component';
 import { ReliefRecordCreateComponent } from './relief-record-create/relief-record-create.component';
 import { NavarComponentComponent } from './navar-component/navar-component.component';
+import { ReliefService } from './services/relief.serivice';
+import { SignupComponent } from './signup/signup.component';
+import { LoginComponent } from './login/login.component';
+import { AuthService } from './services/auth.service';
+import { UsernameValidators } from './signup/signup.validators';
+import { AuthGuard } from './service/auth-guard.service';
+import { LoginAuthGuard } from './service/login-auth-guard.service';
+import { AdminAuthGuard } from './service/admin-auth-guard.service';
+import { NoAccessComponent } from './no-access/no-access.component';
 
 
 @NgModule({
@@ -53,7 +62,10 @@ import { NavarComponentComponent } from './navar-component/navar-component.compo
     OrganizationShowComponent,
     OrganizationUpdateComponent,
     ReliefRecordCreateComponent,
-    NavarComponentComponent
+    NavarComponentComponent,
+    SignupComponent,
+    LoginComponent,
+    NoAccessComponent
   ],
   imports: [
     BrowserModule,
@@ -63,17 +75,20 @@ import { NavarComponentComponent } from './navar-component/navar-component.compo
     RouterModule.forRoot([
       {path: '', component: HomeComponent},
       {path: 'division/show', component: DivisionShowComponent},
-      {path: 'division/add', component: DivisionCreateComponent},
-      {path: 'division/update/:divisionId', component: DivisionUpdateComponent},
+      {path: 'division/add',
+       component: DivisionCreateComponent,
+       canActivate: [AuthGuard]
+      },
+      {path: 'division/update/:divisionId', component: DivisionUpdateComponent,
+      canActivate: [AdminAuthGuard]
+        },
       {path: 'district/show', component: DistrictShowComponent},
       {path: 'district/add', component: DistrictCreateComponent},
-      {path: 'upazillas/show', component: UpazillaShowComponent},
-      {path: 'upazillas/add', component: UpazillaCreateComponent},
-      {path: 'unions/show', component: UnionShowComponent},
-      {path: 'unions/add', component: UnionCreateComponent},
+      {path: 'upazilla/show', component: UpazillaShowComponent},
+      {path: 'union/add', component: UnionCreateComponent},
 
-      {path: 'unions/show', component: UnionShowComponent},
-      {path: 'upazillas/add', component: UpazillaCreateComponent},
+      {path: 'union/show', component: UnionShowComponent},
+      {path: 'upazilla/add', component: UpazillaCreateComponent},
       {path: 'divdision/update/:divisionId', component: DivisionUpdateComponent},
 
       {path: 'disaster/add', component: DisasterCreateComponent},
@@ -83,10 +98,14 @@ import { NavarComponentComponent } from './navar-component/navar-component.compo
       {path: 'organization/create', component: OrganizationCreateComponent},
       {path: 'organization/show', component: OrganizationShowComponent},
       {path: 'organization/update/:orgId', component: OrganizationUpdateComponent},
-      {path: 'relief/add', component: ReliefRecordCreateComponent}
+      {path: 'relief/add', component: ReliefRecordCreateComponent},
+      {path: 'login', component: LoginComponent,canActivate: [LoginAuthGuard]},
+      {path:'signup',component:SignupComponent},
+      {path: 'no-access',component: NoAccessComponent}
     ])
   ],
-  providers: [AreaService, DisasterService, OrganizationService],
+  providers: [AreaService, DisasterService, OrganizationService,ReliefService,
+    AuthService, UsernameValidators,AuthGuard,LoginAuthGuard,AdminAuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
