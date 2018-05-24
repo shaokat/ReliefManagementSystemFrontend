@@ -13,7 +13,7 @@ import { AuthService } from '../services/auth.service';
 export class DivisionShowComponent implements OnInit {
   divisions: any[];
 
-  constructor(private service: AreaService, private auth: AuthService) { }
+  constructor(private service: AreaService, public auth: AuthService) { }
 
   ngOnInit() {
     this.service.getAll("/divisions")
