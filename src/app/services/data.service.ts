@@ -64,7 +64,6 @@ export class DataService {
       .catch(this.handleError)
       .subscribe();
   }
- 
 
   update(resource, extURl: string) {
     let options = this.makeTokenHeader();

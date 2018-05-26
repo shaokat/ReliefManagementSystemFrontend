@@ -37,6 +37,7 @@ import { AuthGuard } from './service/auth-guard.service';
 import { LoginAuthGuard } from './service/login-auth-guard.service';
 import { AdminAuthGuard } from './service/admin-auth-guard.service';
 import { NoAccessComponent } from './no-access/no-access.component';
+import { ReliefRecordShowComponent } from './relief-record-show/relief-record-show.component';
 
 
 @NgModule({
@@ -65,7 +66,8 @@ import { NoAccessComponent } from './no-access/no-access.component';
     NavarComponentComponent,
     SignupComponent,
     LoginComponent,
-    NoAccessComponent
+    NoAccessComponent,
+    ReliefRecordShowComponent
   ],
   imports: [
     BrowserModule,
@@ -95,10 +97,11 @@ import { NoAccessComponent } from './no-access/no-access.component';
       {path: 'disaster/show', component: DisasterShowComponent},
       {path: 'disaster/update/:disasterId', component: DisasterUpdateComponent},
 
-      {path: 'organization/create', component: OrganizationCreateComponent},
+      {path: 'organization/add', component: OrganizationCreateComponent},
       {path: 'organization/show', component: OrganizationShowComponent},
       {path: 'organization/update/:orgId', component: OrganizationUpdateComponent},
       {path: 'relief/add', component: ReliefRecordCreateComponent},
+      {path: 'relief/show', component: ReliefRecordShowComponent},
       {path: 'login', component: LoginComponent,canActivate: [LoginAuthGuard]},
       {path:'signup',component:SignupComponent},
       {path: 'no-access',component: NoAccessComponent}

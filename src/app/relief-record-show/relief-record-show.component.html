@@ -1,0 +1,53 @@
+<div  align="center" class="form-group mx-sm-3 mb-2 type">
+  <label for="reliefType">Relief Type</label>
+      <select [(ngModel)] = "reliefType" name="reliefType" (ngModelChange)="getByType()" >
+        <option value="item">Item</option>
+        <option value="money">Money</option>
+      </select>
+        <label for="fromDate" class="form-group mx-sm-3 mb-2 type">From Date</label>
+        <input [(ngModel)]="fromDate" name="fromDate" type="date" >
+        <label for="toDate" class="form-group mx-sm-3 mb-2 type">To Date</label>
+        <input [(ngModel)]="toDate" name="toDate" type="date" >
+
+        <button 
+        (click)="getByDateRange()"
+        class="btn btn-default btn-sm">Search</button>
+      </div>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Organization</th>
+      <th scope="col">Place</th>
+      <th scope="col">Date of Distribution</th>
+      <th scope="col">Relief Type</th>
+      <th *ngIf="reliefType === 'item'"  scope="col">Item Name</th>
+      <th *ngIf="reliefType === 'item'" scope="col">Item Amount</th>
+      <th *ngIf="reliefType === 'money'" scope="col">Amount in  Taka</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr  *ngFor="let reliefRecord of reliefRecords">
+          <td> {{ reliefRecord.organization.name }}</td>
+          <td>{{ reliefRecord.place.name }}</td>
+          <td>{{ reliefRecord.timestamp['dayOfMonth']+
+            ', '+reliefRecord.timestamp['dayOfWeek'].toLowerCase()+
+            ' - ' +reliefRecord.timestamp['month'].toLowerCase()+
+            ' - '+reliefRecord.timestamp['year'] }}</td>
+            <td>{{reliefRecord.type.type}}</td>
+            <td *ngIf="reliefType === 'item'"  >{{reliefRecord.type.name}}</td>
+            <td *ngIf="reliefType === 'item'" >{{reliefRecord.type.amountInUnit}}</td>
+            <td *ngIf="reliefType === 'money'" >{{reliefRecord.type.amountInTaka}}</td>
+            
+
+          <td><button
+            (click)="deletereliefRecord(reliefRecord)"
+            class="btn btn-default btn-sm">Delete</button>
+            <button
+              [routerLink]="['/reliefRecord/update',reliefRecord.id]"
+              class="btn btn-default btn-sm">Update</button>
+            </td>
+    </tr>
+
+  </tbody>
+</table>

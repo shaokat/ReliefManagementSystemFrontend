@@ -24,7 +24,7 @@
   </option>
 </select>
 <label for="union">Union</label>
-<select [(ngModel)]="selectUnion"
+<select required [(ngModel)]="selectUnion"
   name="selectUnion" class="form-control">
   <option *ngFor="let union of unions" [ngValue]="union">
     {{union.name}}
@@ -38,36 +38,47 @@
   <div class="card h-100">
   <h5 class="card-header bg-light text-black">Type of Relief</h5>
   <div class="card-body">
-      <input name="options"  [(ngModel)]="reliefType" type="radio" [value]="true" /> Money
+      <input required name="options"  [(ngModel)]="reliefType" type="radio" [value]="true" /> Money
 
-      <input name="options"[(ngModel)]="reliefType" type="radio" [value]="false" /> Item
+      <input required name="options"[(ngModel)]="reliefType" type="radio" [value]="false" /> Item
      
       
       <div *ngIf="reliefType">
-          <label for="Amount">Amount</label>
-          <input ngModel name="amount" required #amount="ngModel" type="text" 
+          <label required for="Amount">Amount</label>
+          <input [(ngModel)]="amount" name="amount" required  type="text" 
           placeholder="amount in taka" class="form-control">
           
         
           <label for="ReceivedPepole">Recevied People</label>
           
-            <input ngModel name="receivedPepole" type="text" class="form-control" id="receivedPepole"
-            #receivedPepole = "ngModel" placeholder="number of people received" />
+            <input required [(ngModel)]="receivedPepole" name="receivedPepole" type="text" 
+            class="form-control" id="receivedPepole"
+            placeholder="number of people received" />
       
       </div>
 
       <div *ngIf="!reliefType">
     
+        <input  required [(ngModel)]="itemName" name="itemName" type="text" class="form-control" 
+             placeholder="Name of Item" />
+             
           <label for="ReceivedPepole">Item Amount</label>
           
-            <input  required ngModel name="receivedPepole" type="text" class="form-control" id="receivedPepole"
-            #receivedPepole = "ngModel" placeholder="number of people received" />
+            <input  required [(ngModel)]="itemAmount" name="itemAmount" type="text" class="form-control" 
+             placeholder="Amount of Item" />
+             
       
       </div>
+      <label for="Description">Description</label>
+          
+      <textarea [(ngModel)]="description" name="description" 
+           id="description" class="form-control" cols="30" rows="10">
+      </textarea>
       <label for="dateOfDisttribution">
           Date Of Distribution
         </label>
-        <input type="date" name="dateOfDisttribution" class="form-control" [(ngModel)]="dateOfDisttribution">
+        <input required type="date" name="dateOfDisttribution" class="form-control"
+         [(ngModel)]="dateOfDisttribution">
     </div>
     </div>
     </div>
@@ -78,7 +89,7 @@
       <div class="card-body">
           
           <label for="organization">Organization</label>
-          <select ngModel="selectedOrganization" name="organization" class="form-control">
+          <select required [(ngModel)]="selectedOrganization" name="selectedOrganization" class="form-control">
             <option *ngFor="let org of organizations" [ngValue]="org">
               {{org.nameAcronym}} ({{org.name}})
             </option>
@@ -92,7 +103,7 @@
             <div class="card-body">
                 
                 <label for="disaster">Disasterr</label>
-                <select ngModel="selectedDisaster" name="disaster" class="form-control">
+                <select required [(ngModel)]="selectedDisaster" name="selectedDisaster" class="form-control">
                   <option *ngFor="let dis of disasters" [ngValue]="dis">
                     {{dis.name}}
                   </option>
@@ -101,6 +112,6 @@
               </div>
               </div>
        </div> 
-       <button class="btn btn-primary" [disabled]="!relief.valid">Submit</button>
+       <button class="btn btn-primary" [disabled]="!relief.valid" >Submit</button>
       </form>
 </div>

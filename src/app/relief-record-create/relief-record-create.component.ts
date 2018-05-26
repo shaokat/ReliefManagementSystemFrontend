@@ -14,17 +14,29 @@ import { ReliefService } from '../services/relief.serivice';
   styleUrls: ['./relief-record-create.component.css']
 })
 export class ReliefRecordCreateComponent implements OnInit {
+ 
   organizations: Organization[];
   divisions: any[];
   districts: any[];
   upazillas: any[];
   unions: any[];
   selectUnion:any
+  selectedDisaster:any
+  selectedOrganization:any
+  itemAmount:any
+  itemName:any
+  receivedPepole:any
+  amount:number
+  rType:any
+  relief:any
+  description:any
   show: boolean = true;
   reliefType
   disasters: DisasterRecord[];
   dateOfDisttribution
-  constructor(private reliefService: ReliefService, private service: AreaService,private orgService: OrganizationService,private disasterService: DisasterService) { }
+  constructor(private reliefService: ReliefService, private service: AreaService,
+    private orgService: OrganizationService,private disasterService: DisasterService
+  ) { }
 
   ngOnInit() {
     Observable.combineLatest([
@@ -59,9 +71,32 @@ export class ReliefRecordCreateComponent implements OnInit {
 
   }
   createRelief(){
-    let union ={id:this.selectUnion.id,name:this.selectUnion.name}
-    this.reliefService.createWithoutID(this.selectUnion,'/save');
-    console.log(union)
+    let union = this.selectUnion.id;
+     let organization = this.selectedOrganization.id;
+     let disaster = this.selectedDisaster.id;
+    if(this.reliefType){
+      let amount = this.amount;
+      this.rType = 'money'
+       this.relief = {
+          type:"money",amountInTaka:amount,noOfPeopleHelped:this.receivedPepole,
+          description:this.description
+      }
+  }
+  else{
+    this.rType = 'itme'
+    let itemAmount = this.itemAmount;
+     let receivedPepole = this.receivedPepole;
+     this.relief = {
+       type:"item",name:this.itemName,amountInUnit:this.itemAmount,
+       description:this.description
+     }
+  }
+  
+    // this.reliefService.createWithoutID(this.selectUnion,'/save');
+     
+    this.reliefService.createWithDateString(this.relief,"/save/"+union+"/"+disaster+"/"+
+    organization,this.dateOfDisttribution)
+    
   }
   
 
