@@ -7,6 +7,7 @@ import { DisasterRecord } from '../disaster-create/disaster-create.component';
 import { DisasterService } from '../services/disaster.service';
 import { Observable } from 'rxjs/Observable';
 import { ReliefService } from '../services/relief.serivice';
+import 'rxjs/add/observable/combineLatest';
 
 @Component({
   selector: 'app-relief-record-create',
