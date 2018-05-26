@@ -2,6 +2,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AreaService } from './../services/division.service';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/combineLatest';
 
 @Component({
   selector: 'app-union-update',
