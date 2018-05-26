@@ -5,6 +5,6 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ReliefService extends DataService {
   constructor(http: Http) {
-    super('http://localhost:8080/reliefs', http);
+    super('https://relief-management.herokuapp.com/reliefs', http);
    }
 }

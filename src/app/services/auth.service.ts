@@ -18,7 +18,7 @@ export class AuthService {
   }
 
   login(credentials) { 
-   return this.http.post('http://localhost:8080/users/authenticate', credentials)
+   return this.http.post('https://relief-management.herokuapp.com/users/authenticate', credentials)
     .map(response => {
       let result = response.json();
       console.log(result)
@@ -40,11 +40,11 @@ export class AuthService {
       role: this.defaultRole
     };
 
-    this.http.post('http://localhost:8080/users/sign-up', user)
+    this.http.post('https://relief-management.herokuapp.com/users/sign-up', user)
     .subscribe(temp =>  this.router.navigate(['login']));
   }
    getlAllUser(){
-    return this.http.get('http://localhost:8080/users/all');
+    return this.http.get('https://relief-management.herokuapp.com/users/all');
     
   }
 
