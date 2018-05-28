@@ -23,6 +23,9 @@ export class DisasterCreateComponent implements OnInit {
     .subscribe(type =>  this.disasterType = type  );
     this.description = 'intial';
     this.selectedType = 'Thunderstorms';
+    let MyDate = new Date();
+    this.dateOfOccurance =MyDate.getFullYear()+'-'+('0' + (MyDate.getMonth()+1)).slice(-2)
+    +'-'+('0' + MyDate.getDate()).slice(-2) 
   }
 
   createDisaster(form) {

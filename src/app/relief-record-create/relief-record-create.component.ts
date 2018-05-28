@@ -21,12 +21,15 @@ export class ReliefRecordCreateComponent implements OnInit {
   districts: any[];
   upazillas: any[];
   unions: any[];
-  selectUnion:any
+  selectedDivision
+  selectedDistrict
+  selectedUpazilla
+  selectedUnion:any
   selectedDisaster:any
   selectedOrganization:any
   itemAmount:any
   itemName:any
-  receivedPepole:any
+  receivedPepole:number
   amount:number
   rType:any
   relief:any
@@ -51,6 +54,11 @@ export class ReliefRecordCreateComponent implements OnInit {
     });
     this.reliefType=true
     this.service
+    this.amount=0;
+    this.receivedPepole=0;
+    let MyDate = new Date();
+    this.dateOfDisttribution =MyDate.getFullYear()+'-'+('0' + (MyDate.getMonth()+1)).slice(-2)
+    +'-'+('0' + MyDate.getDate()).slice(-2) 
     
   }
 
@@ -72,32 +80,42 @@ export class ReliefRecordCreateComponent implements OnInit {
 
   }
   createRelief(){
-    let union = this.selectUnion.id;
-     let organization = this.selectedOrganization.id;
-     let disaster = this.selectedDisaster.id;
-    if(this.reliefType){
-      let amount = this.amount;
-      this.rType = 'money'
-       this.relief = {
-          type:"money",amountInTaka:amount,noOfPeopleHelped:this.receivedPepole,
-          description:this.description
+      if(this.reliefType){
+        let amount = this.amount;
+        this.rType = 'money'
+        this.relief = {
+            type:"money",amountInTaka:amount,noOfPeopleHelped:this.receivedPepole,
+            description:this.description
+        }
+      
+    }
+    else{
+      this.rType = 'itme'
+      let itemAmount = this.itemAmount;
+      let receivedPepole = this.receivedPepole;
+      this.relief = {
+        type:"item",name:this.itemName,amountInUnit:this.itemAmount,
+        noOfPeopleHelped:this.receivedPepole,description:this.description
       }
-  }
-  else{
-    this.rType = 'itme'
-    let itemAmount = this.itemAmount;
-     let receivedPepole = this.receivedPepole;
-     this.relief = {
-       type:"item",name:this.itemName,amountInUnit:this.itemAmount,
-       description:this.description
-     }
-  }
+    }
   
-    // this.reliefService.createWithoutID(this.selectUnion,'/save');
-     
-    this.reliefService.createWithDateString(this.relief,"/save/"+union+"/"+disaster+"/"+
-    organization,this.dateOfDisttribution)
+      this.reliefService.createWithDateString(this.relief,"/save/"+this.selectedUnion.id+"/"
+        +this.selectedDisaster.id+"/"+ this.selectedOrganization.id,this.dateOfDisttribution)
     
+      this.selectedDivision='';
+      this.selectedDistrict='';
+      this.selectedUpazilla='';
+      this.selectedUnion='';
+      this.dateOfDisttribution=''
+      this.selectedDisaster=''
+      this.selectedOrganization='';
+      this.itemAmount='';
+      this.itemName='';
+      this.receivedPepole=0;
+      this.amount=0;
+      this.description='';
+
+      
   }
   
 
