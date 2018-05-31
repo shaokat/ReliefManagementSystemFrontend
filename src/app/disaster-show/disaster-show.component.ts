@@ -16,6 +16,7 @@ export class DisasterShowComponent implements OnInit {
   constructor(private service: DisasterService, private router: Router) { }
 
   ngOnInit() {
+    
     this.load();
   }
 
