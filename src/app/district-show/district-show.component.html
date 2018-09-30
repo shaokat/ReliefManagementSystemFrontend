@@ -1,0 +1,31 @@
+<div class="card" style="width: 18rem;">
+    <h5 class="card-header bg-light text-black">Districts</h5>
+    <div class="card-body">
+  <label for="dvision">Division</label>
+  <select ngModel="selectedDivision" (ngModelChange)="getDistricts($event)" name="division" class="form-control">
+    <option *ngFor="let division of divisions" [value]="division.id">{{division.name}}</option>
+  </select>
+</div>
+</div>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">District Name</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr  *ngFor="let district of districts">
+          <td> {{ district.name }}</td>
+          <td><button 
+            (click)="deletePost(district)"
+            class="btn btn-default btn-sm">Delete</button>
+            <button 
+            [routerLink]="['/district/update',district.id]"
+            class="btn btn-default btn-sm">Update</button>
+          </td>
+    </tr>
+   
+  </tbody>
+</table>
+
